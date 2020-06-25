@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>flex</title>
+	<style type="text/css">
+		body {
+			margin: 0
+		}
+		.flex-container {
+			height: 100vh;
+			background-color: hsl(0, 60%, 30%);
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.flex-item {
+        	width: 550px;
+        	height: 350px;
+        	border: 5px solid hsl(60, 45%, 26%);
+		}
+		.flex-item-2-order {
+			order: -1;
+		}
+		@media (max-width: 768px) {
+			.flex-container {
+				flex-direction: column;
+			}
+			.flex-item {
+				width: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+    <div class="flex-container">
+    	<div class="flex-item">flex-items-1</div>
+    	<div class="flex-item flex-item-2-order">flex-items-2</div>
+    </div>
+</body>
+</html>

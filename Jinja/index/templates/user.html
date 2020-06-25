@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block body %}
+    enter {{ module }} module
+    {% block content %}{% endblock %}
+    {{ self.content() }}  {# 通过self.BLOCKNAME重复调用块 #}
+{% endblock %}
+
+{% block sidebar %}
+    {{ super() }}  {# 通过super方法在子块中调用父块内容 #}
+    sidebar in user.html
+{% endblock %}

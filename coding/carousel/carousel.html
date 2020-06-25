@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>css-fulfil</title>
+    <style>
+        html {
+            background-color: #FFF;
+        }
+        body {
+            width: 1920px;
+            height: 1080px;
+            background-color: hsl(60, 30%, 60%);
+        }
+        .carousel {
+            width: 300px;
+            height: 180px;
+            overflow: hidden;
+            position: absolute;
+        }
+        .carousel-container {
+            width: 1200px;
+            height: 180px;
+            position: absolute;
+            left: 0;
+            font-size: 0;  /* 消除行内块元素之间的间距 */
+        }
+        .carousel-item {
+            width: 300px;
+            height: 180px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-item" style="background-color: hsl(0, 70%, 60%)"></div>
+            <div class="carousel-item" style="background-color: hsl(60, 70%, 60%)"></div>
+            <div class="carousel-item" style="background-color: hsl(120, 70%, 60%)"></div>
+        </div>
+    </div>
+    
+    <script src="jquery.min.js"></script>
+    <script>
+        $(".carousel-container").append($(".carousel-item").first().clone());  // 最后一张图片和第一张一样
+        var scene = 1; // 初始显示第一张图片
+        var carouselItemCount = $(".carousel-item").length; // 轮播图的数量
+        function carouselSlide() {
+            // 显示最后一张图片时，将容器复位
+            if (scene == carouselItemCount) {
+                $(".carousel-container").css("left", "0");
+                scene = 1;
+            }
+            // 将容器向左移动scene个图片的距离
+            $(".carousel-container").stop().animate({
+                left: -300 * scene
+            }, 600, 'swing');
+            scene++;
+        }
+        setInterval(function(){
+           carouselSlide();
+        }, 1800);
+    </script>
+</body>
+</html>

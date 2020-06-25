@@ -1,0 +1,15 @@
+{% extends basehtml %}  {# 在extends标签中可以使用变量 #}
+{% import 'macro.html' as macro %}
+
+{% block content %}
+    extends from {{ basehtml }}
+    {{ macro.video('<video_play>') }}
+{% endblock %}
+
+{% block sidebar %}
+    {% for foo in range(10) if foo < 4 %}
+        <li class="{{ loop.cycle('even', 'odd') }}">{{ foo }}</li>  {# 在for循环中使用loop.cycle在每次循环中循环取值 #}
+    {% else %}
+        <li><em>no items to be display</em></li>  {# 若for循环没有值可以输出，则输出此内容 #}
+    {% endfor %}
+{% endblock %}

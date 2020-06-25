@@ -1,0 +1,5 @@
+{# 通过定义宏复用模板片段 #}
+
+{% macro video(name) -%}
+    <div>a template snippet, called {{ name|upper()|e }}</div>  {# 对name手动转义（jinja默认不自动转义） #}
+{%- endmacro %}
