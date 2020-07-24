@@ -31,7 +31,7 @@ def logger(text=''):
     return _decorator
 
 
-@logger('DEBUG')
+@logger('DEBUG')  # 等价于 today = logger('DEBUG')(today)
 def today():
     print '2019-7-22'
 
